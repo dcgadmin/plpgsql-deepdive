@@ -15,8 +15,8 @@ Ensure you have the following installed on your system:
 If using Git, open a terminal or command prompt and run:
 
 ```sh
-git clone https://github.com/AkashDotPy/postgresql_excercise.git
-cd postgresql_excercise
+git clone https://github.com/dcgadmin/plpgsql-deepdive.git
+cd plpgsql-deepdive
 ```
 
 If not using Git, manually download and extract the project files.

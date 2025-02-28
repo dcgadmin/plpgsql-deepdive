@@ -1,14 +1,19 @@
 python-dotenv==1.0.1; sys_platform == 'linux'
 python-dotenv==1.0.1; sys_platform == 'win32'
+python-dotenv==1.0.1; sys_platform == 'darwin'
 
 psycopg2==2.9.10; sys_platform == 'linux'
 psycopg2==2.9.10; sys_platform == 'win32'
+psycopg2-binary==2.9.10; sys_platform == 'darwin'
 
 pandas==2.2.3; sys_platform == 'linux'
 pandas==2.2.3; sys_platform == 'win32'
+pandas==2.2.3; sys_platform == 'darwin'
 
 streamlit==1.42.2; sys_platform == 'linux'
 streamlit==1.42.2; sys_platform == 'win32'
+streamlit==1.42.2; sys_platform == 'darwin'
 
 plotly==6.0.0; sys_platform == 'linux'
 plotly==6.0.0; sys_platform == 'win32'
+plotly==6.0.0; sys_platform == 'darwin'

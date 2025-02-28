@@ -2,7 +2,7 @@ import streamlit as st
 import time
 from executor import get_default_data, booking_details_chart
 
-st.title("PostgreSQL Excercise")
+st.title("DCG - PLpgSQL Exercise")
 simulation = st.toggle("Simulation")
 
 booking_chart_placeholder = st.empty()  

@@ -17,6 +17,7 @@ def side_navbar():
                         st.Page(r"pages/facilities_cost.py", title="Facilities Cost"),
                         st.Page(r"pages/all_facilities.py", title="Fetch All Facilities"),
                         st.Page(r"pages/check_discount.py", title="Check Discounts"),
+                        st.Page(r"pages/create_booking.py", title="Create Booking"),
                         ])
 
     pg.run()

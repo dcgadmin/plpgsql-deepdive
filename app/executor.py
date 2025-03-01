@@ -265,7 +265,24 @@ def get_discounts(selected_member):
 
     except psycopg2.Error as e:
         print(f"Query execution failed : {e}")
-        return None   
+        return None  
+
+def get_create_booking(selected_facility,selected_member,starttime,slots):
+    facility_id = get_facility_id(selected_facility)
+    member_id = get_member_id(selected_member)
+    try:
+        connection = get_connection()
+        if connection:
+            with connection:
+                with connection.cursor() as cursor:
+                    cursor.execute(queries.create_booking, (facility_id,member_id,starttime,slots))  
+                    data = cursor.fetchall()
+                    column_names = [desc[0] for desc in cursor.description]  
+                    df = pd.DataFrame(data, columns=column_names)
+                    return df
+
+    except psycopg2.Error as e:
+        return(f"Query execution failed : {e}")
 
 def booking_details_chart(booking_details_df):
     explode_values = [0.1] * len(booking_details_df["facility_name"].unique())

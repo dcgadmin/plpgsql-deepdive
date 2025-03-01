@@ -4,7 +4,7 @@ from executor import get_facilities_list, get_facility_booking_summary
 
 
 facilities_list = get_facilities_list()
-st.write(f"Try different alternatives in database to return multiple results")
+st.write(f"Try different alternatives in database to return multiple results - dbcode (get_facility_booking_summary)")
 if facilities_list is not None:
     selected_facility = st.selectbox("Select facility:", facilities_list, index=None, placeholder="Select facility name...")
     if selected_facility is not None:

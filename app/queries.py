@@ -9,4 +9,4 @@ member_name = "with alias1 as NOT MATERIALIZED (select get_member_name(mod(gener
 facilities_cost = "Select * from getfacilitiescost(%s);"
 all_facilities = "Select * from fetchallfacilities(%s);"
 check_discount = "Select * from check_discount_dynamic(%s);"
-create_booking = "CALL createbooking(%s, %s, %s, %s);"
+create_booking = "createbooking"

@@ -1,5 +1,6 @@
 import streamlit as st
 from executor import get_default_data, get_facilities_list, get_facility_usage_hours
+import time
 
 
 def logo():
@@ -24,8 +25,12 @@ def side_navbar():
     if facilities_list is not None:
         selected_facility = st.sidebar.selectbox("Select facility:", facilities_list, index=None, placeholder="Select facility name...")
         if selected_facility is not None:
+            start_time = time.time()
             usage_hours = get_facility_usage_hours(selected_facility)
+            end_time = time.time()  
+            execution_time = round(end_time - start_time, 2)
             st.sidebar.write(f"Facility usage hours for {selected_facility} :", usage_hours)
+            st.sidebar.write(f"Execution time : {execution_time} seconds")
     else:
         st.sidebar.write("No data for facilities list")
 

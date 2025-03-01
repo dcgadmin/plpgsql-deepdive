@@ -143,13 +143,20 @@ def get_facility_booking_summary(selected_facility):
                 with connection.cursor() as cursor:
                     # cursor.execute("BEGIN;") 
                     cursor.execute(queries.booking_summary, (facid_value,))  
-                    cursor_name = cursor.fetchone()[0]  
+                    cursor_names = cursor.fetchall()  
+                    cursor_name1 = cursor_names[0][0]
+                    cursor_name2 = cursor_names[1][0]
                     # cursor.execute("commit;")
-                    cursor.execute(f'fetch all in "{cursor_name}";')
+                    cursor.execute(f'fetch all in "{cursor_name1}";')
                     data = cursor.fetchall()
                     column_names = [desc[0] for desc in cursor.description]  
-                    df = pd.DataFrame(data, columns=column_names)
-                    return df
+                    df1 = pd.DataFrame(data, columns=column_names)
+
+                    cursor.execute(f'fetch all in "{cursor_name2}";')
+                    data = cursor.fetchall()
+                    column_names = [desc[0] for desc in cursor.description]  
+                    df2 = pd.DataFrame(data, columns=column_names)
+                    return df1, df2
 
     except psycopg2.Error as e:
         return(f"Query execution failed : {e}")

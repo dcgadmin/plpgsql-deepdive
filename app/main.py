@@ -11,12 +11,12 @@ def logo():
 
 def side_navbar():
     pg = st.navigation([st.Page(r"pages/home.py", title="Home"),
-                        st.Page(r"pages/booking_summary.py", title="Booking Summary"),
                         st.Page(r"pages/search_bookings.py", title="Search Bookings"),
+                        st.Page(r"pages/booking_summary.py", title="Booking Summary"),
+                        st.Page(r"pages/check_discount.py", title="Check Discounts"),
                         st.Page(r"pages/member_name.py", title="Member Names"),
                         st.Page(r"pages/facilities_cost.py", title="Facilities Cost"),
                         st.Page(r"pages/all_facilities.py", title="Fetch All Facilities"),
-                        st.Page(r"pages/check_discount.py", title="Check Discounts"),
                         st.Page(r"pages/create_booking.py", title="Create Booking"),
                         ])
 

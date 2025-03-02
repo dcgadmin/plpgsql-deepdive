@@ -275,7 +275,7 @@ def get_create_booking(selected_facility,selected_member,starttime,slots):
         if connection:
             with connection:
                 with connection.cursor() as cursor:
-                    cursor.callproc(queries.create_booking, (facility_id,member_id,starttime,slots))  
+                    cursor.execute(queries.create_booking, (int(facility_id),int(member_id),starttime,int(slots)))  
                     data = cursor.fetchall()
                     column_names = [desc[0] for desc in cursor.description]  
                     df = pd.DataFrame(data, columns=column_names)

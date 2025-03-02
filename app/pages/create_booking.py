@@ -19,7 +19,7 @@ formatted_start_time = start_datetime.strftime("%Y-%m-%d %H:%M:%S")
 
 st.write("Your Booking time will be:", formatted_start_time)
 
-slots = st.number_input("Enter slots (Max: 10)", min_value=1, max_value=10, value=5, step=1)
+slots = st.number_input("Enter slots (Max: 5)", min_value=1, max_value=5, value=2, step=1)
 
 if selected_facility is not None  and selected_member is not None:
     if st.button("Create", type="primary"):

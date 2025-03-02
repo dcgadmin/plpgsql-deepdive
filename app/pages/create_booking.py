@@ -13,7 +13,7 @@ if members_list:
 
 
 selected_date = st.date_input("Select Date", date.today())
-selected_time = st.time_input("Select Time", time(), step=0:30:00)
+selected_time = st.time_input("Select Time", time(), step=1800)
 start_datetime = datetime.combine(selected_date, selected_time)
 formatted_start_time = start_datetime.strftime("%Y-%m-%d %H:%M:%S")
 

@@ -27,4 +27,4 @@ if selected_facility is not None  and selected_member is not None:
         if isinstance(result, str):
             st.error(result)
         else:
-            st.dataframe(result, use_container_width=True, hide_index=True)
+            st.write("Booking is Confirm, :sunglasses:")

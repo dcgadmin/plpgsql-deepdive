@@ -276,13 +276,9 @@ def get_create_booking(selected_facility,selected_member,starttime,slots):
             with connection:
                 with connection.cursor() as cursor:
                     cursor.execute(queries.create_booking, (int(facility_id),int(member_id),starttime,int(slots)))  
-                    data = cursor.fetchall()
-                    column_names = [desc[0] for desc in cursor.description]  
-                    df = pd.DataFrame(data, columns=column_names)
-                    return df
-
+                    return True
     except psycopg2.Error as e:
-        return(f"Query execution failed : {e}")
+        return(f"Booking failed : {e}")
 
 def booking_details_chart(booking_details_df):
     explode_values = [0.1] * len(booking_details_df["facility_name"].unique())

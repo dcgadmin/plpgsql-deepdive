@@ -11,6 +11,7 @@ def logo():
 
 def side_navbar():
     pg = st.navigation([st.Page(r"pages/home.py", title="Home"),
+                        st.Page(r"pages/task.py", title="Task"),
                         st.Page(r"pages/search_bookings.py", title="Search Bookings"),
                         st.Page(r"pages/booking_summary.py", title="Booking Summary"),
                         st.Page(r"pages/check_discount.py", title="Check Discounts"),

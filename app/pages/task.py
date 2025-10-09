@@ -1,10 +1,8 @@
-
 import streamlit as st
 import pandas as pd
-from tests import run_all_tests
+from executor import get_test_case_status
 
-
-results = run_all_tests()
+results = get_test_case_status()
 
 rows = [
     {"challenges": name, "status": "✅" if data["status"] else "❌"}

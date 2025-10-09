@@ -6,14 +6,15 @@ import queries
 import streamlit as st
 import plotly.graph_objects  as go
 import time
+from datetime import datetime
 
 load_dotenv() 
 
-PG_HOST = os.getenv("PG_HOST", None)
-PG_PORT = os.getenv("PG_PORT", None)
-PG_USER = os.getenv("PG_USER", None)
-PG_PASSWORD = os.getenv("PG_PASSWORD", None)
-PG_DBNAME = os.getenv("PG_DBNAME", None)
+PG_HOST = os.getenv("POSTGRES_HOST", None)
+PG_PORT = os.getenv("POSTGRES_PORT", None)
+PG_USER = os.getenv("POSTGRES_USER", None)
+PG_PASSWORD = os.getenv("POSTGRES_PASSWORD", None)
+PG_DBNAME = os.getenv("POSTGRES_DB", None)
 
 
 if not PG_HOST and not PG_PORT and not PG_USER and not PG_PASSWORD and not PG_DBNAME:
@@ -292,4 +293,27 @@ def booking_details_chart(booking_details_df):
                     )
 
     st.plotly_chart(fig, key=f"chart_{time.time()}") 
+
+def test_case_execution(block):
+    result = {}
+    try:
+        connection = get_connection()
+        if connection:
+            with connection:
+                with connection.cursor() as cursor:
+                    cursor.execute(block)
+        result = {"status": True, "last_run": datetime.now().isoformat()}
+    except Exception as e:
+        result = {"status": False, "last_run": datetime.now().isoformat(), "error": str(e)}
+    finally:
+        cursor.close()
+        connection.rollback()
+    return result
+
+def get_test_case_status():
+    results = {}
+    for task_name, block in queries.test_cases.items():
+        result = test_case_execution(block)
+        results[task_name] = result
+    return results 
 

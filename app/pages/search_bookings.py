@@ -77,5 +77,10 @@ st.info("""## 🏆 Challenges-Case sensitivity
 
 name = st.selectbox("Member Name(firstname or surname) Column", ["firstname","Surname"], index=0, placeholder="Select firstname or surname column name...")
 surname = st.text_input("Input Name ", placeholder="Enter name to search").strip()
-
-            
+          
+if st.button("Search Bookings"):
+    details = get_individual_bookings(name, surname)
+    if isinstance(details, str):
+        st.error(details)
+    else:
+        st.dataframe(details, use_container_width=True, hide_index=True)
